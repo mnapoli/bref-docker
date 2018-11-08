@@ -1,6 +1,9 @@
 FROM php:7.2
 
-RUN apt-get update && apt install -y wget gnupg && rm -rf /var/lib/apt/lists/*
+# wget is for installing Composer
+# gnupg is for installing node
+# zlib1g-dev is for the zip PHP extension
+RUN apt-get update && apt install -y wget gnupg zlib1g-dev && rm -rf /var/lib/apt/lists/*
 
 # Install node and npm
 RUN curl -sL https://deb.nodesource.com/setup_11.x | bash -
@@ -8,6 +11,8 @@ RUN apt-get install -y nodejs
 
 # Install serverless
 RUN npm install -g serverless
+
+RUN docker-php-ext-install zip
 
 # Install Composer
 # TODO download the latest version

@@ -1,7 +1,6 @@
 FROM php:7.2
 
-RUN apt-get update && apt install -y wget
-RUN apt install -y wget gnupg && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt install -y wget gnupg && rm -rf /var/lib/apt/lists/*
 
 # Install Composer
 # TODO download the latest version
